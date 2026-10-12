@@ -1,0 +1,4 @@
+function page(){render();$('#nm').onchange=e=>{S.name=e.target.value.trim()||'Atlet GYMFLOW';save();render();toast('Nama disimpan')};
+$('#rs').onclick=()=>{if(!confirm('Reset semua progres latihan? Jadwal tidak dihapus.'))return;DAYS.forEach(k=>S.days[k].items.forEach(i=>i.d=0));S.log=[];save();render();toast('Progres direset')}}
+function render(){const s=stats();$('#nm').value=S.name;$('#hi').textContent='Halo, '+S.name;$('#s1').textContent=s.ses;$('#s2').textContent=s.d;$('#s3').textContent=s.p+'%';$('#bp').style.width=s.p+'%';
+$('#lg').innerHTML=S.log.length?S.log.slice().reverse().map(l=>`<div class="item"><i data-lucide="check-circle"></i><div class="n"><b>${esc(l.n)}</b><br><span class="s">${l.day} · ${l.at}</span></div></div>`).join(''):'<div class="empty">Belum ada progres. Centang latihan di halaman Jadwal untuk memulai.</div>';icons()}
